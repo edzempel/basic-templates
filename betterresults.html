@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" charset="utf-8">
+<head>
+<title>Better Website</title>
+<link href="betterwebsite.css" rel="stylesheet" />
+</head>
+<body>
+<h1>Personality Results</h1>
+<p>This is the first paragraph.</p>
+<p>Result is: <span id="first"></span></p>
+</body>
+<script>
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value.replace(/\+/g,"&nbsp;");
+    });
+    return vars;
+}
+function getUrlParam(parameter, defaultvalue){
+    var urlparameter = defaultvalue;
+    if(window.location.href.indexOf(parameter) > -1){
+        urlparameter = getUrlVars()[parameter];
+        }
+    return urlparameter;
+}
+document.getElementById("first").innerHTML = getUrlParam("first");
+//https://html-online.com/articles/get-url-parameters-javascript
+</script>
+</html>
